@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Campaign Hub</title>
+  <style>
+    body { font-family: Arial; margin: 0; padding: 0; }
+    nav { display: flex; background: #333; }
+    nav a {
+      padding: 14px 20px; color: white; text-decoration: none;
+    }
+    nav a:hover, .active { background: #555; }
+    .tab { display: none; padding: 20px; }
+    .tab.active { display: block; }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="#" onclick="showTab('home')" class="active" id="link-home">Home</a>
+    <a href="#" onclick="showTab('info')" id="link-info">Info</a>
+    <a href="#" onclick="showTab('howto')" id="link-howto">How-To</a>
+    <a href="#" onclick="showTab('contact')" id="link-contact">Contact</a>
+  </nav>
+
+  <div class="tab active" id="home"><h2>Welcome</h2><p>Intro to the campaign.</p></div>
+  <div class="tab" id="info"><h2>Information</h2><p>Key facts and details.</p></div>
+  <div class="tab" id="howto"><h2>How to Help</h2><p>Steps to support the campaign.</p></div>
+  <div class="tab" id="contact"><h2>Contact</h2><p>Email or link to join.</p></div>
+
+  <script>
+    function showTab(tabId) {
+      document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+      document.querySelectorAll('nav a').forEach(link => link.classList.remove('active'));
+      document.getElementById(tabId).classList.add('active');
+      document.getElementById('link-' + tabId).classList.add('active');
+    }
+  </script>
+</body>
+</html>
