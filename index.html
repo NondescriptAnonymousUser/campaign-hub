@@ -8,54 +8,64 @@
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
+      background-color: #f7f9fb;
+      color: #111;
+      line-height: 1.6;
     }
     header {
       background-color: #002147;
       color: white;
-      padding: 10px 20px;
+      padding: 20px;
       display: flex;
       align-items: center;
     }
     header img {
-      height: 40px;
+      height: 50px;
       margin-right: 15px;
     }
     header h1 {
+      font-size: 1.8em;
       margin: 0;
-      font-size: 1.5em;
     }
-    nav {
-      background-color: #0b2a52;
-      display: flex;
+    .section {
+      padding: 60px 20px;
+      max-width: 900px;
+      margin: 0 auto;
     }
-    nav a {
+    .cta {
+      background-color: #ffcc00;
+      color: #002147;
+      text-align: center;
+      padding: 60px 20px;
+    }
+    .cta h2 {
+      margin-bottom: 20px;
+      font-size: 2em;
+    }
+    .cta p {
+      max-width: 700px;
+      margin: 0 auto 30px;
+      font-size: 1.1em;
+    }
+    .cta button {
+      background: #002147;
       color: white;
-      padding: 14px 20px;
-      text-decoration: none;
-      display: inline-block;
-    }
-    nav a:hover, nav a.active {
-      background-color: #1c3b6f;
-    }
-    .content {
-      padding: 20px;
-    }
-    .tab {
-      display: none;
-    }
-    .tab.active {
-      display: block;
+      font-weight: bold;
+      padding: 14px 28px;
+      border: none;
+      border-radius: 6px;
+      font-size: 1em;
+      cursor: pointer;
     }
     form {
-      background: white;
-      padding: 15px;
-      border-radius: 5px;
-      box-shadow: 0 0 5px #ccc;
+      background: #ffffff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.08);
     }
     form input, form textarea {
       width: 100%;
-      margin-bottom: 10px;
+      margin-bottom: 15px;
       padding: 10px;
       border: 1px solid #ccc;
       border-radius: 4px;
@@ -63,86 +73,87 @@
     form button {
       background: #002147;
       color: white;
-      padding: 10px 15px;
+      padding: 10px 16px;
       border: none;
       border-radius: 4px;
       cursor: pointer;
     }
+    .image-placeholder {
+      background-color: #dcdcdc;
+      height: 200px;
+      border-radius: 8px;
+      margin: 20px 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #666;
+      font-style: italic;
+    }
     footer {
-      background-color: #002147;
+      background: #002147;
       color: white;
       text-align: center;
-      padding: 15px;
-      margin-top: 30px;
+      padding: 20px;
+      font-size: 0.9em;
     }
-    footer a {
-      color: #9ecff6;
-      margin: 0 10px;
-      text-decoration: none;
+    @media (max-width: 600px) {
+      .cta h2 { font-size: 1.5em; }
+      header h1 { font-size: 1.4em; }
     }
   </style>
 </head>
 <body>
+
   <header>
-    <img src="logo.png" alt="Campaign Logo" />
-    <h1>Campaign Hub</h1>
+    <img src="logo.png" alt="Logo">
+    <h1>Campaign for Integrity</h1>
   </header>
-  <nav>
-    <a href="#" class="active" onclick="showTab('about')">About</a>
-    <a href="#" onclick="showTab('mission')">Our Mission</a>
-    <a href="#" onclick="showTab('help')">Get Involved</a>
-    <a href="#" onclick="showTab('report')">Report</a>
-  </nav>
 
-  <div class="content">
-    <div class="tab active" id="about">
-      <h2>Who We Are</h2>
-      <p>We are a group committed to accountability, transparency, and positive change. This platform is a secure place to share and access campaign updates and ensure our voice is heard clearly.</p>
-    </div>
+  <section class="cta" id="top">
+    <h2>Seen Something Worth Reporting?</h2>
+    <p>Your anonymous input can help us identify trends, protect people, and make change happen. If you’ve witnessed anything relevant in your area, even something small — please report it here.</p>
+    <button onclick="document.getElementById('report-form').scrollIntoView({ behavior: 'smooth' });">
+      Report Anonymously Now
+    </button>
+  </section>
 
-    <div class="tab" id="mission">
-      <h2>What We Stand For</h2>
-      <p>We stand for fairness, integrity, and collective action. We aim to create a trustworthy space for reporting concerns, sharing truths, and pushing for a better environment for all involved.</p>
-    </div>
-
-    <div class="tab" id="help">
-      <h2>How You Can Help</h2>
-      <p>- Share this website widely using the QR code<br>
-         - Encourage others to report truthfully<br>
-         - Volunteer to help manage responses<br>
-         - Stay informed and involved</p>
-    </div>
-
-    <div class="tab" id="report">
-      <h2>Anonymous Report Form</h2>
-      <form action="https://formspree.io/f/movdbywr" method="POST">
-        <label>Your email (optional):<br>
-          <input type="email" name="email" placeholder="you@example.com">
-      </label><br><br>
+  <section class="section" id="report-form">
+    <h2>Anonymous Report Form</h2>
+    <form action="https://formspree.io/f/movdbywr" method="POST">
+      <label>Your email (optional):<br>
+        <input type="email" name="email" placeholder="you@example.com">
+      </label>
       <label>Your message:<br>
         <textarea name="message" rows="6" placeholder="Type your report here..." required></textarea>
-      </label><br><br>
+      </label>
       <button type="submit">Send</button>
     </form>
-    </div>
-  </div>
+  </section>
+
+  <section class="section" id="about">
+    <h2>Who We Are</h2>
+    <p>We are a grassroots group driven by the shared goal of accountability and truth. Our aim is to ensure no concern is ignored and no voice is silenced.</p>
+    <div class="image-placeholder">Image: Our Team / Symbol</div>
+  </section>
+
+  <section class="section" id="mission">
+    <h2>What We Stand For</h2>
+    <p>We believe in fairness, transparency, and proactive change. Every report adds another piece to the puzzle and helps expose the bigger picture.</p>
+    <div class="image-placeholder">Image: Values / Integrity / Scale of Impact</div>
+  </section>
+
+  <section class="section" id="involved">
+    <h2>How You Can Help</h2>
+    <p>1. Share this link or QR code with others<br>
+       2. Encourage others to report honestly<br>
+       3. Offer time, skills or local insights<br>
+       4. Stay alert and informed</p>
+    <div class="image-placeholder">Image: Community Action / Sharing QR / Local Support</div>
+  </section>
 
   <footer>
-    <p>Contact us at <a href="mailto:campaign@protonmail.com">campaign@protonmail.com</a></p>
-    <p>
-      <a href="#">Privacy</a> | 
-      <a href="#">Security</a> | 
-      <a href="#">Terms</a>
-    </p>
+    &copy; 2025 Campaign for Integrity — All Rights Reserved
   </footer>
 
-  <script>
-    function showTab(tabId) {
-      document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
-      document.querySelectorAll('nav a').forEach(link => link.classList.remove('active'));
-      document.getElementById(tabId).classList.add('active');
-      document.querySelector(`nav a[onclick*='${tabId}']`).classList.add('active');
-    }
-  </script>
 </body>
 </html>
