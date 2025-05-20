@@ -116,10 +116,14 @@
     <div class="tab" id="report">
       <h2>Anonymous Report Form</h2>
       <form action="https://formspree.io/f/movdbywr" method="POST">
-        <label for="message">Report or Information:</label>
-        <textarea name="message" id="message" rows="6" required></textarea>
-        <button type="submit">Submit Anonymously</button>
-      </form>
+        <label>Your email (optional):<br>
+          <input type="email" name="email" placeholder="you@example.com">
+      </label><br><br>
+      <label>Your message:<br>
+        <textarea name="message" rows="6" placeholder="Type your report here..." required></textarea>
+      </label><br><br>
+      <button type="submit">Send</button>
+    </form>
     </div>
   </div>
 
