@@ -100,6 +100,14 @@
       .cta h2 { font-size: 1.5em; }
       header h1 { font-size: 1.4em; }
     }
+    p.drop-cap::first-letter {
+      float: left;
+      font-size: 2.5em;
+      line-height: 1;
+      padding-right: 8px;
+      font-weight: bold;
+      color: #002147;
+    }
   </style>
 </head>
 <body>
@@ -138,8 +146,8 @@
 
     <p><em>By our embedded correspondent in Dartmouth</em></p>
 
-    <p><strong>DARTMOUTH, GOTHAM</strong> — Once a quiet estuarine capital perched at the mouth of the Dart, Dartmouth now stirs to the low hum of Merlin helicopters and the stately presence of RFA Mounts Bay. The Ensign flutters above the grey hulls of Royal Navy warships as Operation Final Endeavour unfolds—a mission born of necessity, forged in diplomacy, and anchored in Britain's long-standing maritime ethos: to protect the innocent, uphold peace, and respond when democracy falters.</p>
-
+    <p class="drop-cap"><strong>DARTMOUTH, GOTHAM</strong> — Once a quiet estuarine capital perched at the mouth of the Dart, Dartmouth now stirs to the low hum of Merlin helicopters and the stately presence of RFA Mounts Bay. The Ensign flutters above the grey hulls of Royal Navy warships as Operation Final Endeavour unfolds—a mission born of necessity, forged in diplomacy, and anchored in Britain's long-standing maritime ethos: to protect the innocent, uphold peace, and respond when democracy falters.</p>
+    
     <p>Gotham, a peninsular republic long caught between its past ties to the Metropolis Union and its tentative future as a sovereign democracy, has again descended into unrest. What began as a hopeful turn—an overwhelming electoral mandate for the pro-democracy Independent Party in 2024—was soon drowned in the echoes of sabotage, corruption leaks, and escalating violence.</p>
 
     <div class="image-placeholder">Image: Dartmouth civilians evacuating / Royal Marines on patrol</div>
@@ -171,6 +179,27 @@
     <p><strong>What Gotham faces is not just political turmoil. It is a contest between democracy and anarchy, between a fledgling republic and a shadowy insurgency set on dragging it backward.</strong> In such moments, the Royal Navy becomes more than a military arm—it becomes a moral compass.</p>
 
     <p>And in the windswept streets of Dartmouth, that compass now points resolutely toward hope.</p>
+</section>
+
+<section class="cta" id="bottom-report">
+  <h2>Seen Something Worth Reporting?</h2>
+  <p>Your information could be crucial. If you’ve observed anything unusual or noteworthy related to the current situation in Gotham — we encourage you to report it anonymously using the form below.</p>
+  <button onclick="document.getElementById('report-form-bottom').scrollIntoView({ behavior: 'smooth' });">
+    Submit a Report
+  </button>
+</section>
+
+<section class="section" id="report-form-bottom">
+  <h2>Anonymous Report Form</h2>
+  <form action="https://formspree.io/f/movdbywr" method="POST">
+    <label>Your email (optional):<br>
+      <input type="email" name="email" placeholder="you@example.com">
+    </label>
+    <label>Your message:<br>
+      <textarea name="message" rows="6" placeholder="Type your report here..." required></textarea>
+    </label>
+    <button type="submit">Send</button>
+  </form>
 </section>
   
 <footer>
