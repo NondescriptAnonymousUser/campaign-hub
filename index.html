@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Campaign Hub</title>
   <style>
+    /* Existing styles */
     body {
       margin: 0;
       font-family: Arial, sans-serif;
@@ -123,9 +124,123 @@
       z-index: 1000;
       display: none; /* Hidden by default */
     }
-
     #backToTop.show {
       display: block;
+    }
+
+    .slideshow-container {
+      position: relative;
+      max-width: 800px; 
+      margin: 40px auto;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+      padding-bottom: 65%; 
+      height: 0;
+    }
+
+    .slide {
+      display: none;
+      position: absolute;
+      width: 100%;
+      height: 100%; 
+      top: 0;
+      left: 0;
+      opacity: 0;
+      transform: translateX(-50px) scale(0.98); 
+      transition: opacity 1.2s ease-in-out, transform 1.2s ease-in-out; 
+      background-size: contain; 
+      background-repeat: no-repeat; 
+      background-position: center;
+      background-color: #f0f0f0; 
+      border-radius: 12px;
+    }
+
+    .slide.active {
+      display: block;
+      opacity: 1;
+      transform: translateX(0) scale(1); 
+      position: absolute; 
+      z-index: 1; 
+    }
+
+    .slide:not(.active) {
+        transform: translateX(50px) scale(0.98); 
+      }
+    .slide-text {
+      position: absolute;
+      bottom: 30px;
+      left: 30px;
+      background-color: rgba(0,0,0,0.4);
+      color: white;
+      padding: 20px 30px;
+      border-radius: 10px;
+      max-width: 70%;
+      font-size: 1.2rem;
+      backdrop-filter: blur(8px);
+    }
+
+    .arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(255,255,255,0.3);
+      border-radius: 50%;
+      width: 48px;
+      height: 48px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 0.3s ease;
+      user-select: none;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+      z-index: 10; 
+    }
+
+    .arrow:hover {
+      background-color: rgba(255,255,255,0.7);
+    }
+
+    .arrow svg {
+      width: 24px;
+      height: 24px;
+      fill: #333;
+    }
+
+    .arrow.prev {
+      left: 12px;
+    }
+
+    .arrow.next {
+      right: 12px;
+    }
+
+    .dots {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .dot {
+      display: inline-block;
+      width: 14px;
+      height: 14px;
+      margin: 0 6px;
+      background-color: rgba(0, 0, 0, 0.4);
+      border-radius: 50%;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .dot.active {
+      background-color: #002147;
+      box-shadow: 0 0 8px rgba(0,0,0,0.8);
+    }
+
+    @media (max-width: 940px) {
+      .slideshow-container {
+        max-width: 90vw;
+      }
     }
   </style>
 </head>
@@ -143,6 +258,48 @@
       Report Anonymously Now
     </button>
   </section>
+
+  <div class="slideshow-container">
+
+    <div class="slide active" style="background-image: url('p1.jpg');">
+      <div class="slide-text"></div>
+    </div>
+
+    <div class="slide" style="background-image: url('p2.jpg');">
+      <div class="slide-text"></div>
+    </div>
+
+    <div class="slide" style="background-image: url('p3.jpg');">
+      <div class="slide-text"></div>
+    </div>
+    <div class="slide" style="background-image: url('p4.jpg');">
+      <div class="slide-text"></div>
+    </div>
+    <div class="slide" style="background-image: url('p5.jpg');">
+      <div class="slide-text"></div>
+    </div>
+
+    <div class="arrow prev" aria-label="Previous slide" role="button" tabindex="0">
+      <svg viewBox="0 0 24 24" >
+        <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+      </svg>
+    </div>
+
+    <div class="arrow next" aria-label="Next slide" role="button" tabindex="0">
+      <svg viewBox="0 0 24 24">
+        <path d="M8.59 16.59L10 18l6-6-6-6-1.41 1.41L13.17 12z"/>
+      </svg>
+    </div>
+  </div>
+
+  <div class="dots" role="tablist" aria-label="Slideshow navigation">
+    <span class="dot active" role="tab" tabindex="0" aria-selected="true" aria-controls="slide1"></span>
+    <span class="dot" role="tab" tabindex="-1" aria-selected="false" aria-controls="slide2"></span>
+    <span class="dot" role="tab" tabindex="-1" aria-selected="false" aria-controls="slide3"></span>
+    <span class="dot" role="tab" tabindex="-1" aria-selected="false" aria-controls="slide3"></span>
+    <span class="dot" role="tab" tabindex="-1" aria-selected="false" aria-controls="slide3"></span>
+
+  </div>
 
   <section class="section" id="report-form">
     <h2>Anonymous Report Form</h2>
@@ -198,50 +355,114 @@
     <p><strong>What Gotham faces is not just political turmoil. It is a contest between democracy and anarchy, between a fledgling republic and a shadowy insurgency set on dragging it backward.</strong> In such moments, the Royal Navy becomes more than a military arm—it becomes a moral compass.</p>
 
     <p>And in the windswept streets of Dartmouth, that compass now points resolutely toward hope.</p>
-</section>
+  </section>
 
-<section class="cta" id="bottom-report">
-  <h2>Seen Something Worth Reporting?</h2>
-  <p>Your information could be crucial. If you’ve observed anything unusual or noteworthy related to the current situation in Gotham — we encourage you to report it anonymously using the form below.</p>
-  <button onclick="document.getElementById('report-form-bottom').scrollIntoView({ behavior: 'smooth' });">
-    Submit a Report
-  </button>
-</section>
+  <section class="cta" id="bottom-report">
+    <h2>Seen Something Worth Reporting?</h2>
+    <p>Your information could be crucial. If you’ve observed anything unusual or noteworthy related to the current situation in Gotham — we encourage you to report it anonymously using the form below.</p>
+    <button onclick="document.getElementById('report-form-bottom').scrollIntoView({ behavior: 'smooth' });">
+      Submit a Report
+    </button>
+  </section>
 
-<section class="section" id="report-form-bottom">
-  <h2>Anonymous Report Form</h2>
-  <form action="https://formspree.io/f/movdbywr" method="POST">
-    <label>Your email (optional):<br>
-      <input type="email" name="email" placeholder="you@example.com">
-    </label>
-    <label>Your message:<br>
-      <textarea name="message" rows="6" placeholder="Type your report here..." required></textarea>
-    </label>
-    <button type="submit">Send</button>
-  </form>
-</section>
-  
-<footer>
-  &copy; 2025 PoW Final Endeavour Campaign 24-3 — All Rights Reserved
-</footer>
+  <section class="section" id="report-form-bottom">
+    <h2>Anonymous Report Form</h2>
+    <form action="https://formspree.io/f/movdbywr" method="POST">
+      <label>Your email (optional):<br>
+        <input type="email" name="email" placeholder="you@example.com">
+      </label>
+      <label>Your message:<br>
+        <textarea name="message" rows="6" placeholder="Type your report here..." required></textarea>
+      </label>
+      <button type="submit">Send</button>
+    </form>
+  </section>
+    
+  <footer>
+    &copy; 2025 PoW Final Endeavour Campaign 24-3 — All Rights Reserved
+  </footer>
 
-<button id="backToTop" onclick="scrollToTop()">↑ Top</button>
+  <button id="backToTop" onclick="scrollToTop()">↑ Top</button>
 
-<script>
-  // Show/hide button on scroll
-  window.onscroll = function () {
-    const btn = document.getElementById("backToTop");
-    if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
-      btn.classList.add("show");
-    } else {
-      btn.classList.remove("show");
+  <script>
+    window.onscroll = function () {
+      const btn = document.getElementById("backToTop");
+      if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+        btn.classList.add("show");
+      } else {
+        btn.classList.remove("show");
+      }
+    };
+
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
-  };
 
-  function scrollToTop() {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    const slides = document.querySelectorAll('.slide');
+    const prev = document.querySelector('.arrow.prev');
+    const next = document.querySelector('.arrow.next');
+    const dots = document.querySelectorAll('.dot');
+
+    let currentSlide = 0;
+
+    function showSlide(index, direction = 'next') {
+    if (index >= slides.length) index = 0;
+    if (index < 0) index = slides.length - 1;
+
+    slides.forEach((slide, i) => {
+      slide.classList.remove('active');
+      // FIX: Changed single quotes to backticks here
+      slide.style.transform = `translateX(${direction === 'next' ? '-50px' : '50px'}) scale(0.98)`;
+      slide.style.zIndex = '';
+      dots[i].classList.remove('active');
+      dots[i].setAttribute('aria-selected', 'false');
+      dots[i].setAttribute('tabindex', '-1');
+    });
+
+    // FIX: Changed single quotes to backticks here
+    slides[index].style.transform = `translateX(${direction === 'next' ? '50px' : '-50px'}) scale(0.98)`;
+    slides[index].style.zIndex = '1';
+
+    setTimeout(() => {
+      slides[index].classList.add('active');
+      slides[index].style.transform = 'translateX(0) scale(1)';
+      slides[index].style.zIndex = '1';
+    }, 50);
+
+    dots[index].classList.add('active');
+    dots[index].setAttribute('aria-selected', 'true');
+    dots[index].setAttribute('tabindex', '0');
+
+    currentSlide = index;
   }
-</script>
+
+    prev.addEventListener('click', () => {
+      showSlide(currentSlide - 1, 'prev');
+    });
+
+    next.addEventListener('click', () => {
+      showSlide(currentSlide + 1, 'next');
+    });
+
+    dots.forEach((dot, i) => {
+      dot.addEventListener('click', () => {
+        const direction = (i > currentSlide) ? 'next' : 'prev';
+        showSlide(i, direction);
+      });
+      dot.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          const direction = (i > currentSlide) ? 'next' : 'prev';
+          showSlide(i, direction);
+        }
+      });
+    });
+
+    showSlide(0); 
+    setInterval(() => {
+      showSlide(currentSlide + 1, 'next');
+    }, 6000);
+  </script>
 
 </body>
 </html>
