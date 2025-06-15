@@ -326,6 +326,7 @@
   <section class="section" id="reporting-context">
     <h2>On the Ground in Gotham</h2>
     <img src="Dartmouth Devon.jpg" alt="Dartmouth with BRNC in the background" style="width:100%; border-radius:8px; margin: 20px 0;">
+    <p style="font-size: 0.9em; text-align: center; color: #555; margin-top: -15px;">Dartmouth, Gotham</p>
 
     <p><strong>Royal Navy Deploys to Gotham Amid Rising Chaos: A Mission of Peace in the Shadow of War</strong></p>
 
@@ -335,13 +336,16 @@
     
     <p>Gotham, a peninsular republic long caught between its past ties to the Metropolis Union and its tentative future as a sovereign democracy, has again descended into unrest. What began as a hopeful turn—an overwhelming electoral mandate for the pro-democracy Independent Party in 2024—was soon drowned in the echoes of sabotage, corruption leaks, and escalating violence.</p>
 
-    <div class="image-placeholder">Image: Dartmouth civilians evacuating / Royal Marines on patrol</div>
+    <img src="mug.jpg" alt="Dartmouth with BRNC in the background" style="width:100%; border-radius:8px; margin: 20px 0;">
+    <p style="font-size: 0.9em; text-align: center; color: #555; margin-top: -15px;">Black RIB flying the MUG flag on the River Dart</p>
 
     <p>At the heart of the disruption: the Metropolis Union Group (MUG), a pro-Metropolis insurgency whose rhetoric is steeped in grievance and whose methods are unmistakably brutal. Their agenda? Nothing short of dismantling Gotham’s fragile democracy.</p>
 
     <p>An attack in March—using a vehicle-borne improvised explosive device against a military installation—shattered any illusion that MUG remained a collection of fringe protesters. Intelligence now confirms the group’s access to chemical weapon precursors, likely remnants from Gotham’s bloody civil war. The threat of chemical warfare looms darkly, confirming fears that the MUG, emboldened by foreign support and internal discontent, is willing to push Gotham back into the abyss.</p>
 
-    <div class="image-placeholder">Image: Destroyed infrastructure / Hospital in crisis</div>
+    <img src="breasley.jpg" alt="Dartmouth with BRNC in the background" style="width:100%; border-radius:8px; margin: 20px 0;">
+    <p style="font-size: 0.9em; text-align: center; color: #555; margin-top: -15px;">Wanted suspect 1, please report any sightings or known details</p>
+
 
     <p>In the face of this rising menace, Gotham’s legitimate government issued an urgent appeal to the international community. Britain responded.</p>
 
@@ -349,15 +353,15 @@
 
     <p><strong>Their mission:</strong> protect key infrastructure, reassure civilians, and ensure the streets of Dartmouth are no longer the battleground of extremist ambition.</p>
 
-    <div class="image-placeholder">Image: Aid distribution / Engineers rebuilding utilities</div>
+    <img src="colours.jpg" alt="Dartmouth with BRNC in the background" style="width:100%; border-radius:8px; margin: 20px 0;">
+    <p style="font-size: 0.9em; text-align: center; color: #555; margin-top: -15px;">Wanted suspect 2, please report any sightings or known details</p>
+
 
     <p>The MUG’s narrative—branding foreign presence as colonial intrusion—wilfully ignores their own reliance on foreign backers in Metropolis and their penchant for mafia-style coercion. In truth, the Navy is not here to occupy but to heal. As one senior officer put it, <em>“We’re not here to take sides—we’re here to prevent collapse.”</em></p>
 
     <p>Gotham’s civilian infrastructure, already compromised by years of neglect and corruption, is under siege. Hospitals lack supplies. Power stations flicker under sabotage. The Gotham Armed Forces, though loyal to the state, are poorly equipped and ill-prepared. Government services are infiltrated by criminal elements — from the Gotham Mafia to radical environmentalist hackers. In such a febrile environment, stability is not a luxury—it is a moral imperative.</p>
 
     <p>Still, the Navy remains cautious. Rules of engagement are tight. Civilian safety is paramount. Cadets and officers alike move with discipline, eyes watchful, rifles slung but never raised without cause. Riverine patrols secure key access points, while engineers assist in rebuilding shattered utilities. Humanitarian aid, funded by £2.5 million in UK foreign aid, is already being distributed.</p>
-
-    <div class="image-placeholder">Image: Royal Navy patrol boats / Local children with aid</div>
 
     <p>The Royal Navy’s presence here is not a mere projection of force. It is the quiet assertion of values: that sovereignty must not be surrendered to fear, that democracy is worth defending, and that Britain, despite the complexities of this conflict, has chosen to stand on the side of peace.</p>
 
@@ -471,7 +475,29 @@
     setInterval(() => {
       showSlide(currentSlide + 1, 'next');
     }, 6000);
+
+    function closePopup() {
+      document.getElementById("popup-alert").style.display = "none";
+    }
   </script>
 
 </body>
+  <div id="popup-alert" style="display: flex; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 9999; justify-content: center; align-items: center;">
+    <div style="background: white; padding: 30px; max-width: 700px; border-radius: 10px; text-align: center; position: relative;">
+      <button onclick="closePopup()" style="position: absolute; top: 10px; right: 10px; font-size: 18px; background: none; border: none; cursor: pointer;">✕</button>
+      <h2 style="color: #c40000;">Have you seen these men?</h2>
+      <p>If you recognise them or have any intel, please submit an anonymous report via the form below.</p>
+      <div style="display: flex; gap: 20px; justify-content: center; margin: 20px 0; flex-wrap: wrap;">
+        <div>
+          <img src="breasley.jpg" alt="Suspect 1" style="max-width: 150px; border-radius: 8px;">
+          <p style="font-size: 0.9em; margin-top: 8px;">Individual A</p>
+        </div>
+        <div>
+          <img src="colours.jpg" alt="Suspect 2" style="max-width: 150px; border-radius: 8px;">
+          <p style="font-size: 0.9em; margin-top: 8px;">Individual B</p>
+        </div>
+      </div>
+      <button onclick="document.getElementById('report-form').scrollIntoView({ behavior: 'smooth' }); closePopup();" style="background: #002147; color: white; padding: 10px 20px; border: none; border-radius: 6px; font-weight: bold;">Report Anonymously</button>
+    </div>
+  </div>
 </html>
