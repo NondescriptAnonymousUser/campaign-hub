@@ -291,28 +291,6 @@
       cursor: pointer;
     }
   </style>
-
-
-
-<!-- VIDEO SCRIPT -->
-<script>
-  function openVideo() {
-    document.getElementById('videoOverlay').style.display = 'flex';
-    document.getElementById('campaignVideo').play();
-  }
-  function closeVideo() {
-  const overlay = document.getElementById('videoOverlay');
-  const iframe = overlay.querySelector('iframe');
-
-  // Reset the iframe by replacing it with a clone (stops playback)
-  if (iframe) {
-    const clone = iframe.cloneNode();
-    iframe.parentNode.replaceChild(clone, iframe);
-  }
-
-  overlay.style.display = 'none';
-}
-</script>
 </head>
 <body>
 
@@ -552,7 +530,6 @@
       document.getElementById("popup-alert").style.display = "none";
     }
 
-  
 
     function openVideo() {
       document.getElementById('videoOverlay').style.display = 'flex';
