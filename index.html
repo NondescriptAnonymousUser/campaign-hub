@@ -526,39 +526,42 @@
       showSlide(currentSlide + 1, 'next');
     }, 6000);
 
-    function closePopup() {
-      document.getElementById("popup-alert").style.display = "none";
-    }
-
-
-    function openVideo() {
-      document.getElementById('videoOverlay').style.display = 'flex';
-      document.getElementById('campaignVideo').play();
-    }
-    function closeVideo() {
-      const overlay = document.getElementById('videoOverlay');
-      const video = document.getElementById('campaignVideo');
-      video.pause();
-      video.currentTime = 0;
-      overlay.style.display = 'none';
-    }
-    
   </script>
-  
- <div id="videoOverlay">
-  <button id="closeVideoBtn" onclick="closeVideo()">✕</button>
-  <div style="position: relative; width: 100%; max-width: 360px;">
-    <iframe width="100%" height="640"
-      src="https://www.youtube.com/embed/-e4P8vAUmc4?autoplay=1&mute=1&playsinline=1"
-      title="60 Second Update"
-      frameborder="0"
-      allow="autoplay; encrypted-media"
-      allowfullscreen
-      style="border-radius: 12px;"></iframe>
-  </div>
-</div>
 
-</body>
+  <script>
+  function openVideo() {
+    document.getElementById('videoOverlay').style.display = 'flex';
+    const iframe = document.querySelector('#videoOverlay iframe');
+    const src = iframe.getAttribute('src');
+    iframe.setAttribute('src', src + '&autoplay=1');
+  }
+
+  function closeVideo() {
+    const overlay = document.getElementById('videoOverlay');
+    const iframe = overlay.querySelector('iframe');
+    overlay.style.display = 'none';
+    const src = iframe.getAttribute('src').replace('&autoplay=1', '');
+    iframe.setAttribute('src', src); // Resetting src stops video
+  }
+
+  function closePopup() {
+    document.getElementById("popup-alert").style.display = "none";
+  }
+</script>
+  
+  <div id="videoOverlay">
+    <button id="closeVideoBtn" onclick="closeVideo()">✕</button>
+    <div style="position: relative; width: 100%; max-width: 360px;">
+      <iframe width="100%" height="640"
+        src="https://www.youtube.com/embed/-e4P8vAUmc4?autoplay=1&mute=1&playsinline=1"
+        title="60 Second Update"
+        frameborder="0"
+        allow="autoplay; encrypted-media"
+        allowfullscreen
+        style="border-radius: 12px;"></iframe>
+    </div>
+  </div>
+
   <div id="popup-alert" style="display: flex; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 9999; justify-content: center; align-items: center;">
     <div style="background: white; padding: 30px; max-width: 700px; border-radius: 10px; text-align: center; position: relative;">
       <button onclick="closePopup()" style="position: absolute; top: 10px; right: 10px; font-size: 18px; background: none; border: none; cursor: pointer;">✕</button>
@@ -577,4 +580,5 @@
       <button onclick="document.getElementById('report-form').scrollIntoView({ behavior: 'smooth' }); closePopup();" style="background: #002147; color: white; padding: 10px 20px; border: none; border-radius: 6px; font-weight: bold;">Report Anonymously</button>
     </div>
   </div>
+  </body>
 </html>
