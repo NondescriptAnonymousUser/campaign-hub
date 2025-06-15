@@ -301,12 +301,17 @@
     document.getElementById('campaignVideo').play();
   }
   function closeVideo() {
-    const overlay = document.getElementById('videoOverlay');
-    const video = document.getElementById('campaignVideo');
-    video.pause();
-    video.currentTime = 0;
-    overlay.style.display = 'none';
+  const overlay = document.getElementById('videoOverlay');
+  const iframe = overlay.querySelector('iframe');
+
+  // Reset the iframe by replacing it with a clone (stops playback)
+  if (iframe) {
+    const clone = iframe.cloneNode();
+    iframe.parentNode.replaceChild(clone, iframe);
   }
+
+  overlay.style.display = 'none';
+}
 </script>
 </head>
 <body>
@@ -408,7 +413,7 @@
     <p>An attack in March—using a vehicle-borne improvised explosive device against a military installation—shattered any illusion that MUG remained a collection of fringe protesters. Intelligence now confirms the group’s access to chemical weapon precursors, likely remnants from Gotham’s bloody civil war. The threat of chemical warfare looms darkly, confirming fears that the MUG, emboldened by foreign support and internal discontent, is willing to push Gotham back into the abyss.</p>
 
     <img src="breasley.jpg" alt="Dartmouth with BRNC in the background" style="width:100%; border-radius:8px; margin: 20px 0;">
-    <p style="font-size: 0.9em; text-align: center; color: #555; margin-top: -15px;">Wanted suspect 1, please report any sightings or known details</p>
+    <p style="font-size: 0.9em; text-align: center; color: #555; margin-top: -15px;">Wanted individual 1, please report any sightings or known details</p>
 
 
     <p>In the face of this rising menace, Gotham’s legitimate government issued an urgent appeal to the international community. Britain responded.</p>
@@ -418,7 +423,7 @@
     <p><strong>Their mission:</strong> protect key infrastructure, reassure civilians, and ensure the streets of Dartmouth are no longer the battleground of extremist ambition.</p>
 
     <img src="colours.jpg" alt="Dartmouth with BRNC in the background" style="width:100%; border-radius:8px; margin: 20px 0;">
-    <p style="font-size: 0.9em; text-align: center; color: #555; margin-top: -15px;">Wanted suspect 2, please report any sightings or known details</p>
+    <p style="font-size: 0.9em; text-align: center; color: #555; margin-top: -15px;">Wanted individual 2, please report any sightings or known details</p>
 
 
     <p>The MUG’s narrative—branding foreign presence as colonial intrusion—wilfully ignores their own reliance on foreign backers in Metropolis and their penchant for mafia-style coercion. In truth, the Navy is not here to occupy but to heal. As one senior officer put it, <em>“We’re not here to take sides—we’re here to prevent collapse.”</em></p>
