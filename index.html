@@ -563,13 +563,17 @@
     
   </script>
   
-  <!-- VIDEO PLAYER OVERLAY -->
  <div id="videoOverlay">
   <button id="closeVideoBtn" onclick="closeVideo()">✕</button>
-  <video id="campaignVideo" controls playsinline autoplay>
-     <source src="60s.mp4" type="video/mp4">
-     Your browser does not support the video tag.
-  </video>
+  <div style="position: relative; width: 100%; max-width: 360px;">
+    <iframe width="100%" height="640"
+      src="https://www.youtube.com/embed/-e4P8vAUmc4?autoplay=1&mute=1&playsinline=1"
+      title="60 Second Update"
+      frameborder="0"
+      allow="autoplay; encrypted-media"
+      allowfullscreen
+      style="border-radius: 12px;"></iframe>
+  </div>
 </div>
 
 </body>
